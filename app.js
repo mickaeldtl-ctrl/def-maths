@@ -42,17 +42,16 @@ Papa.parse(SHEET_URL, {
     }
 
     const srsData = getSRSData();
-    const now = Date.now();
 
+    // Lecture basée sur 3 colonnes : A (Questions), B (Réponse), C (Statut)
     allCards = rows.slice(1).map(row => {
       const question = row[0] ? row[0].trim() : '';
       const cardSRS = srsData[question] || { interval: 0, nextReview: 0 };
       
       return {
         q: question,
-        lecon: row[1] ? row[1].trim() : '',
-        r: row[2] ? row[2].trim() : '',
-        statut: row[3] ? row[3].trim().toUpperCase() : '',
+        r: row[1] ? row[1].trim() : 'Pas de réponse renseignée.',
+        statut: row[2] ? row[2].trim().toUpperCase() : '',
         interval: cardSRS.interval,
         nextReview: cardSRS.nextReview
       };
@@ -63,7 +62,7 @@ Papa.parse(SHEET_URL, {
       return;
     }
 
-    // Tri prioritaire : d'abord les cartes dues pour révision (courbe de l'oubli)
+    // Tri prioritaire : d'abord les cartes dues pour révision
     allCards.sort((a, b) => a.nextReview - b.nextReview);
 
     filteredCards = [...allCards];
@@ -72,7 +71,7 @@ Papa.parse(SHEET_URL, {
     showCard(0);
   },
   error: function() {
-    loadingEl.innerHTML = "⚠️ Erreur lors du chargement des cartes.";
+    loadingEl.innerHTML = "⚠️ Erreur lors du chargement du fichier Google Sheet.";
   }
 });
 
@@ -94,17 +93,14 @@ function showCard(index) {
   const card = filteredCards[currentIndex];
 
   cardQuestion.textContent = card.q;
-  cardResponse.innerHTML = `
-    <p>${card.r}</p>
-    ${card.lecon ? `<br><p>📌 <strong>Leçon :</strong> ${card.lecon}</p>` : ''}
-  `;
+  cardResponse.innerHTML = `<p>${card.r}</p>`;
 
   counterEl.textContent = `Carte ${currentIndex + 1} / ${filteredCards.length}`;
   prevBtn.disabled = currentIndex === 0;
   nextBtn.disabled = currentIndex === filteredCards.length - 1;
 }
 
-// Algorithme de Répétition Espacée (Spaced Repetition System)
+// Algorithme de Répétition Espacée
 function rateCard(rating) {
   const card = filteredCards[currentIndex];
   const srsData = getSRSData();
@@ -116,10 +112,10 @@ function rateCard(rating) {
   } else if (rating === 'hard') {
     interval = interval === 0 ? 1 : Math.round(interval * 1.5);
   } else if (rating === 'easy') {
-    interval = interval === 0 ? 3 : Math.round((interval + 1) * 2.5); // Espacement accru
+    interval = interval === 0 ? 3 : Math.round((interval + 1) * 2.5); // Espacement renforcé
   }
 
-  const nextReview = Date.now() + (interval * 24 * 60 * 60 * 1000); // Conversion en ms
+  const nextReview = Date.now() + (interval * 24 * 60 * 60 * 1000);
 
   srsData[card.q] = { interval, nextReview };
   saveSRSData(srsData);
@@ -155,8 +151,7 @@ searchInput.addEventListener('input', (e) => {
   const q = e.target.value.toLowerCase();
   filteredCards = allCards.filter(c =>
     c.q.toLowerCase().includes(q) ||
-    c.r.toLowerCase().includes(q) ||
-    c.lecon.toLowerCase().includes(q)
+    c.r.toLowerCase().includes(q)
   );
   showCard(0);
 });
