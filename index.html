@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcards & Définitions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>🎴 Flashcards & Définitions</h1>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="🔎 Filtrer par mot-clé...">
+    </div>
+  </header>
+
+  <main>
+    <div id="loading" class="status-msg">Chargement des cartes...</div>
+
+    <div id="flashcardContainer" class="card-wrapper hidden">
+      <div class="progress-info">
+        <span id="counter">Carte 1 / 1</span>
+        <button id="randomBtn" class="btn-secondary">🎲 Aléatoire</button>
+      </div>
+
+      <article class="card">
+        <div class="card-body">
+          <div class="question" id="cardQuestion">Chargement...</div>
+          
+          <details id="cardDetails">
+            <summary>👉 Afficher la réponse</summary>
+            <div class="response-content">
+              <div id="cardResponse"></div>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Boutons d'auto-évaluation (Courbe de l'oubli) -->
+      <div class="srs-controls">
+        <p class="srs-label">Auto-évaluation :</p>
+        <div class="srs-buttons">
+          <button id="btnAgain" class="srs-btn again">❌ Faux (Aujourd'hui)</button>
+          <button id="btnHard" class="srs-btn hard">⚠️ Hard (Bientôt)</button>
+          <button id="btnEasy" class="srs-btn easy">✅ Facile (+Espacé)</button>
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <button id="prevBtn" class="nav-btn">⬅️ Précédent</button>
+        <button id="nextBtn" class="nav-btn primary">Suivant ➡️</button>
+      </div>
+      <p class="nav-hint">💡 Flèches ⬅️ ➡️ pour naviguer.</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
