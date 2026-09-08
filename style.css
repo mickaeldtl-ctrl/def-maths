@@ -70,7 +70,7 @@ h1 {
   padding: 22px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-left: 6px solid #3182ce;
-  min-height: 180px;
+  min-height: 160px;
 }
 
 .question {
@@ -101,7 +101,6 @@ summary {
   line-height: 1.5;
 }
 
-/* Répétition espacée */
 .srs-controls {
   background: white;
   padding: 12px;
