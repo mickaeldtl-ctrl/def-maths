@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "1Z2hVDXoz7qH7f0SEGlHhmLc7YU53FmR9CxgCCu9Su5o";
+const SPREADSHEET_ID = "1yQWvx7FOmqQ1rzB2Hq-JY79fVP2LcZsoAL6Fd2_lH9w";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv`;
 
 let allCards = [];
