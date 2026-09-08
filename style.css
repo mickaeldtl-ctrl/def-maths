@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f4f6f8;
+  color: #2d3748;
+  padding: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #1a365d;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  outline: none;
+  background: white;
+}
+
+#searchInput:focus {
+  border-color: #3182ce;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.btn-secondary {
+  background: #edf2f7;
+  border: 1px solid #cbd5e0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #3182ce;
+  min-height: 180px;
+}
+
+.question {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #1a202c;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+details {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #2b6cb0;
+}
+
+.response-content {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  line-height: 1.5;
+}
+
+/* Répétition espacée */
+.srs-controls {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.srs-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #718096;
+  margin-bottom: 8px;
+}
+
+.srs-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.srs-btn {
+  flex: 1;
+  padding: 8px 4px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.srs-btn.again { background: #e53e3e; }
+.srs-btn.hard { background: #dd6b20; }
+.srs-btn.easy { background: #38a169; }
+
+.nav-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border: 1px solid #cbd5e0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-btn.primary {
+  background: #3182ce;
+  color: white;
+  border-color: #3182ce;
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nav-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+.status-msg {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+.hidden {
+  display: none !important;
+}
